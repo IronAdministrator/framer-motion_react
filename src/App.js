@@ -1,8 +1,9 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Movie from "./components/Movie";
 import Filter from "./components/Filter";
 import { motion, AnimatePresence } from "framer-motion";
+import images from "./images";
 
 function App() {
   const [popular, setPopular] = useState([]);
@@ -22,22 +23,62 @@ function App() {
     setFiltered(movies.results);
   };
 
+  // slider-animation start
+  const [width, setWidth] = useState(0);
+  const carousel = useRef();
+
+  useEffect(() => {
+    console.log(
+      carousel,
+      carousel.current.scrollWidth,
+      carousel.current.offsetWidth
+    );
+    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+  });
+
   return (
     <div className="App">
-      <Filter
-        popular={popular}
-        setFiltered={setFiltered}
-        activeGenre={activeGenre}
-        setActiveGenre={setActiveGenre}
-      />
+      <div className="filtering-animation">
+        <h1 className="main-header">Framer_Motion_React</h1>
+        <h2>Filtering animation</h2>
+        <Filter
+          popular={popular}
+          setFiltered={setFiltered}
+          activeGenre={activeGenre}
+          setActiveGenre={setActiveGenre}
+        />
 
-      <motion.div layout className="popular-movies">
-        <AnimatePresence>
-          {filtered.map((movie) => {
-            return <Movie key={movie.id} movie={movie} />;
-          })}
-        </AnimatePresence>
-      </motion.div>
+        <motion.div layout className="popular-movies">
+          <AnimatePresence>
+            {filtered.map((movie) => {
+              return <Movie key={movie.id} movie={movie} />;
+            })}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+
+      <div className="slider-animation">
+        <h2>Slider animation</h2>
+        <motion.div
+          ref={carousel}
+          className="outer-carousel"
+          whileTap={{ cursor: "grabbing" }}
+        >
+          <motion.div
+            drag="x"
+            dragConstraints={{ right: 0, left: -width }}
+            className="inner-carousel"
+          >
+            {images.map((image) => {
+              return (
+                <motion.div className="item" key={image}>
+                  <img src={image} alt="pexels-img" />
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 }

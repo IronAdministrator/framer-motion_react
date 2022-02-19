@@ -1,7 +1,12 @@
-h2 {
+h1 {
+  text-align: center;
+}
+
+h3 {
   font-size: 1rem;
 }
 
+/* filtering-animation-start */
 .popular-movies {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -9,7 +14,7 @@ h2 {
   grid-row-gap: 2rem;
 }
 
-img {
+.filtering-animation img {
   width: 100%;
   height: 30vh;
   object-fit: cover;
@@ -34,3 +39,28 @@ button.active {
   background: rgb(65, 98, 168);
   color: white;
 }
+/* filtering-animation-end */
+
+/* slider-animation-start */
+.item {
+  min-height: 30rem;
+  min-width: 20rem;
+  padding: 1rem;
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  pointer-events: none;
+}
+
+.inner-carousel {
+  display: flex;
+}
+
+.outer-carousel {
+  cursor: grab;
+  overflow: hidden;
+}
+/* slider-animation-end */

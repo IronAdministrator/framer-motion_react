@@ -9,7 +9,7 @@ const Movie = ({ movie }) => {
       exit={{ opacity: 1, scale: 0 }}
       transition={{ duration: 0.4 }}
     >
-      <h2>{movie.title}</h2>
+      <h3>{movie.title}</h3>
       <img
         src={"https://image.tmdb.org/t/p/w500" + movie.backdrop_path}
         alt=""
