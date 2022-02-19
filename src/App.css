@@ -30,7 +30,7 @@ img {
   cursor: pointer;
 }
 
-button:active {
+button.active {
   background: rgb(65, 98, 168);
   color: white;
 }

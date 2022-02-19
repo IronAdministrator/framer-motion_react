@@ -1,11 +1,13 @@
 import "./App.css";
+import { useEffect, useState } from "react";
 import Movie from "./components/Movie";
 import Filter from "./components/Filter";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 function App() {
   const [popular, setPopular] = useState([]);
   const [filtered, setFiltered] = useState([]);
+  const [activeGenre, setActiveGenre] = useState(0);
 
   useEffect(() => {
     fetchPopular();
@@ -22,9 +24,14 @@ function App() {
 
   return (
     <div className="App">
-      <Filter />
+      <Filter
+        popular={popular}
+        setFiltered={setFiltered}
+        activeGenre={activeGenre}
+        setActiveGenre={setActiveGenre}
+      />
       <div className="popular-movies">
-        {popular.map((movie) => {
+        {filtered.map((movie) => {
           return <Movie key={movie.id} movie={movie} />;
         })}
       </div>
