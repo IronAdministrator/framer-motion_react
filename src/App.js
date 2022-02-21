@@ -37,6 +37,7 @@ function App() {
   });
 
   return (
+    // filtering-animation start
     <div className="App">
       <div className="filtering-animation">
         <h1 className="main-header">Framer_Motion_React</h1>
@@ -56,7 +57,8 @@ function App() {
           </AnimatePresence>
         </motion.div>
       </div>
-
+      {/* filtering-animation end */}
+      {/* slider-animation start */}
       <div className="slider-animation">
         <h2>Slider animation</h2>
         <motion.div
@@ -79,6 +81,7 @@ function App() {
           </motion.div>
         </motion.div>
       </div>
+      {/* slider-animation-end */}
     </div>
   );
 }
