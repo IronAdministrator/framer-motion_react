@@ -76,19 +76,19 @@ h3 {
   border-bottom: 1px solid #dddddd;
 }
 
-.menu li a {
+.menu li button {
   text-decoration: none;
   color: #333333;
   padding: 15px 20px;
   display: block;
 }
 
-.menu button {
+/* .menu button {
   background: none;
   border: none;
   padding: 1rem;
   cursor: pointer;
-}
+} */
 /* filtering-dropdown-end */
 
 .popular-movies {
